@@ -1,0 +1,18 @@
+.header--navBorder {
+  border: $color-negro 5px solid;
+}
+
+$footer: (
+  prefooter: #801365,
+  footer: #212529,
+);  
+
+.prefooter--bg {
+  font-size: $footersize;
+  background-color: map-get($footer, prefooter)
+}
+
+.footer--bg {
+  font-size: $footersize;
+  background-color: map-get($footer, footer)
+}

@@ -1,0 +1,39 @@
+html,body {
+  font-family: 'Open Sans', sans-serif;
+  color: $color-blanco;
+}
+
+.header--menu {
+  li {
+    a {
+      color: $color-blanco;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  }
+}
+
+.vermas--btn {
+  color: $color-blanco;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.buy--btn {
+  @extend .vermas--btn;
+  font-size: 1rem;
+} 
+
+.psize {
+  font-size: $imagespsize;
+}
+
+.contacto--pSize {
+  font-size: 18px;
+}
+
+.container--svg {
+  font-weight: bolder;
+}

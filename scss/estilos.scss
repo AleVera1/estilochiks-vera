@@ -1,0 +1,20 @@
+@import "variables";
+@import "estructura";
+@import "colores";
+@import "tipografia";
+@import "animaciones";
+
+@media screen and (max-width:500px) {
+  .background--image {
+    background-image: url("../images/IMG_1584.JPG");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 400px; }
+
+  .footer--content {
+    display: flex;
+    justify-content: center;
+  }
+}
