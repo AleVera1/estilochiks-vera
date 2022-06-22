@@ -1,127 +1,187 @@
 const products = [
   {
-    "Id": 1,
-    "Nombre": "Collar de Piedras Doradas",
-    "Descripcion": "collar",
-    "Precio": 2250,
+    id: 1,
+    nombre: "Collar de Piedras Doradas",
+    precio: 2250,
+    imagen: 'images/collar1-2/IMG_2003.JPG',
   },
   {
-    "Id": 2,
-    "Nombre": "Collar de Piedras Blancas",
-    "Descripcion": "collar",
-    "Precio": 2300,
+    id: 2,
+    nombre: "Collar de Piedras Blancas",
+    precio: 2300,
+    imagen: 'images/collar2-2/IMG_2054.JPG',
   },
   {
-    "Id": 3,
-    "Nombre": "Collar de Piedras Azulmarino",
-    "Descripcion": "collar",
-    "Precio": 2275,
+    id: 3,
+    nombre: "Collar de Piedras Azulmarino",
+    precio: 2275,
+    imagen: 'images/collar4-2/IMG_2019.JPG',
   },
   {
-    "Id": 4,
-    "Nombre": "Collar de Piedras Grises",
-    "Descripcion": "collar",
-    "Precio": 2200,
+    id: 4,
+    nombre: "Collar de Piedras Grises",
+    precio: 2200,
+    imagen: 'images/collar5-2/IMG_1953.JPG',
   },
   {
-    "Id": 5,
-    "Nombre": "Collar de Piedras Negras",
-    "Descripcion": "collar",
-    "Precio": 2250,
+    id: 5,
+    nombre: "Collar de Piedras Negras",
+    precio: 2250,
+    imagen: 'images/collar10-2/IMG_1949.JPG',
   },
   {
-    "Id": 6,
-    "Nombre": "Collar de Piedras Doradas Oscuras",
-    "Descripcion": "collar",
-    "Precio": 2150,
+    id: 6,
+    nombre: "Collar de Piedras Doradas Oscuras",
+    precio: 2150,
+    imagen: 'images/collar6-2/IMG_2076.JPG',
   },
   {
-    "Id": 7,
-    "Nombre": "Collar de Piedras Marrones",
-    "Descripcion": "collar",
-    "Precio": 2400,
+    id: 7,
+    nombre: "Collar de Piedras Marrones",
+    precio: 2400,
+    imagen: 'images/collar7-2/IMG_2047.JPG',
   },
   {
-    "Id": 8,
-    "Nombre": "Collar de Piedras Rosas",
-    "Descripcion": "collar",
-    "Precio": 2100,
+    id: 8,
+    nombre: "Collar de Piedras Rosas",
+    precio: 2100,
+    imagen: 'images/collar8-2/IMG_2030.JPG',
   },
   {
-    "Id": 9,
-    "Nombre": "Collar de Piedras Azules",
-    "Descripcion": "collar",
-    "Precio": 2300,
+    id: 9,
+    nombre: "Collar de Piedras Azules",
+    precio: 2300,
+    imagen: 'images/collar3-2/IMG_1978.JPG',
   },
-
 ]
 
-function mostrar(mensaje){
-  console.log(mensaje)
-}
+//eventos y variables para abrir el carrito
+const cartOpen = document.getElementById('btnCart');
+const cartClose = document.getElementById('cartClose')
 
-let cart = []
+const cartContainer = document.getElementsByClassName('cart-container')[0]
+const cart = document.getElementsByClassName('cart')[0]
+
+cartOpen.addEventListener('click', ()=> {
+  cartContainer.classList.toggle('cart-active')
+})
+
+cartClose.addEventListener('click', ()=> {
+  cartContainer.classList.toggle('cart-active')
+})
+
+cartContainer.addEventListener('click', ()=> {
+  cartClose.click()
+})
+
+cart.addEventListener('click', (e) => {
+  e.stopPropagation()
+})
+
+//carrito
+
+let buyingCart = [] //recibe la informacion desde la funcion addToCart
+
+const productsContainer = document.getElementById('productsContainer');
+const cartCont = document.getElementById('cartCont');
+
+/* const btnFinish = document.getElementById('finish') todavía no tiene uso*/
+
+const cartCounter = document.getElementById('cartCounter');
+const totalPrice = document.getElementById('totalPrice');
+
+showProducts(products)
+
+function showProducts(products) {
+
+    productsContainer.innerHTML = ""
+
+    products.forEach(el => {
+      //se crea un div para cada producto
+      let productsCard = document.createElement('div')
+      productsCard.className = 'product'
+      
+      productsCard.innerHTML = ` <div class="card text-black card-color" style="width: 18rem;">
+                              <div class="card-image">
+                                  <img src="${el.imagen}" width="500px" class="rounded shadow-drop-2-center animate__animated animate__fadeIn img-fluid">
+                                  <span class="card-title text-center pt-3">${el.nombre}</span>
+                                  
+                              </div>
+                              <div class="card-content">
+                                  <p class= "text-center"> $ ${el.precio}</p>
+                                  <a id="btn${el.id}" class="btn btn-dark buy--btn text-center" role="button">Agregar al Carrito</a>
+                              </div>
+                          </div>
+                        </div>`
+
+      productsContainer.appendChild(productsCard)
+      
+      let btnAdd = document.getElementById(`btn${el.id}`)
+      //boton para agregar al carrito
+      btnAdd.addEventListener('click',()=>{
+          addToCart(el.id);
+    })
+    })
+}
 
 function addToCart(id) {
-  let productFound = products.find(product => product.Id === id)
-  let productCart = cart.find(product => product.Id === id)
-  if (productCart === undefined && productFound !== undefined) {
-      alert("El producto " + productFound.Nombre + " fue agregado a su carrito.")
-      cart.push({
-          Cantidad: 1,
-          ...productFound
-      })
-  }
-  else {
-      const prodIndex = cart.findIndex((prod => prod.Id === id))
-      cart[prodIndex].Cantidad = cart[prodIndex].Cantidad + 1
-      cart[prodIndex].Precio = cart[prodIndex].Precio + productFound.Precio
-  }
+    let alreadyExists = buyingCart.find(e => e.id == id)
+    //si ya existe se modifica la cantidad del mismo
+    if(alreadyExists){
+        alreadyExists.quantity = alreadyExists.quantity + 1
+        document.getElementById(`quantity${alreadyExists.id}`).innerHTML = `<p id="quantity${alreadyExists.id}">Cantidad: ${alreadyExists.quantity}</p>`
+        updateCart()
+    }else{
+      //sino la cantidad se modifica a 1
+      let addProduct = products.find(ele => ele.id === id)
+      addProduct.quantity = 1
+      buyingCart.push(addProduct)
+      updateCart()
+      showCart(addProduct)
+    }
+  
 }
 
-  let nombre = prompt("Ingrese su nombre porfavor.")
+function showCart(addProduct) {
+    // muestra los productos en el carrito
+    let productsCard = document.createElement('div')
+    productsCard.classList.add('productInCart')
+    productsCard.innerHTML =`<p>${addProduct.nombre}</p>
+                <p>Precio: $${addProduct.precio}</p>
+                <p id="quantity${addProduct.id}">Cantidad: ${addProduct.quantity}</p>
+                <button id="delete${addProduct.id}" class="btn-delete"><img src="images/basura.png" alt="eliminar" width="15px"></button>`
+    cartCont.appendChild(productsCard)
 
-  const saludar = (nombre) => {
-      alert("Bienvenido: " + nombre)
-  }
-  saludar(nombre)
-  checkOptions()
-
-
-function checkOptions() {
-  let idProduct = Number(prompt("Ingrese el numero producto que desea comprar:" + "\n" + products.map((product) => ` \n ${product.Id} - ${product.Nombre}`)))
-  if(!isNaN(idProduct)) {
-    addToCart(idProduct)
-    option = prompt("Si desea seguir comprando, introduzca: si" + "\n" + "Para finalizar introduzca: salir")
-  }
-  else {
-    alert("Ingresaste un caracter erroneo. Se recargara la página.")
-    location.reload()
-  }
-
-  while (nombre !== "salir") {
-    if (option === "si") {
-      idProduct = Number(prompt("Ingrese el numero producto que desea comprar:" + "\n" + products.map((product) => ` \n ${product.Id} - ${product.Nombre}`)))
-      
-      if(!isNaN(idProduct)) {
-        addToCart(idProduct)
-        option = prompt("Si desea seguir comprando, introduzca: si" + "\n" + "Para finalizar introduzca: salir")
-      }
-      else {
-        mostrar("No ingresaste un número. Se te devolvera a la página principal.")
-        break
-      }
-    }
-    else if (option === "salir") {
-        alert("Gracias por su compra. Su recibo es: " + "\n" +
-            "Productos :" + "\n" 
-            + cart.map((product) => product.Cantidad > 0
-                ? ` \n Cantidad: ${product.Cantidad} - Nombre: ${product.Nombre} - Precio: ${(product.Precio  )}`
-                : ` \n No seleccionaste ningun producto.`)
-            + "\n" +
-            " Precio Total: " + cart.reduce((acc, { Precio }) => acc + Precio, 0))
-        break
-    }
-  }
+    let btnDelete= document.getElementById(`delete${addProduct.id}`)
+    //permite borrar productos
+    btnDelete.addEventListener('click',()=>{
+        if (addProduct.quantity === 1) {
+            btnDelete.parentElement.remove()
+            buyingCart = buyingCart.filter(item => item.id !== addProduct.id)
+            updateCart()
+        } else {
+          //si tengo mas de un solo producto que borre solo 1
+          addProduct.quantity = addProduct.quantity - 1
+          document.getElementById(`quantity${addProduct.id}`).innerHTML = `<p id="quantity${addProduct.id}">Cantidad: ${addProduct.quantity}</p>`
+          updateCart()
+        }
+    })
 }
 
+function updateCart (){
+    //resultado del total segun la cantidad de productos
+  cartCounter.innerText = buyingCart.reduce((acc,el)=> acc + el.quantity, 0)
+  totalPrice.innerText = buyingCart.reduce((acc,el)=> acc + (el.precio * el.quantity) , 0)                                                            
+}
+
+
+
+
+
+//elements
+
+
+//methods
+
+
+//events

@@ -56,7 +56,10 @@
 
   <section id="background" class="background--image text-center"></section>
 
-  <main>
+  <section>
+    <div>
+      <button class="cart--btn" id="btnCart"><img src="images/shopping-cart.png" alt="carro de compras" width="30px"><span id="cartCounter" class="text-black">0</span></button>
+    </div>
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 text-black d-flex justify-content-center pt-5">
@@ -64,91 +67,21 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid pt-5 d-flex justify-content-around">
-      <div class="row">
-        <div class="col-md-4 text-black pb-5">
-          <img src="images/collar1-2/IMG_2003.JPG" alt="Collar de Piedras Doradas" class="rounded shadow-drop-2-center animate__animated animate__fadeIn img-fluid"> 
-          <p class="text-center psize pt-4">Collar de Piedras Doradas</p>
-          <p class="text-center psize">$2000</p>
-          <div class="text-center">
-            <a class="btn btn-dark buy--btn" href="#" role="button">Comprar</a>
-          </div>
-        </div>
-        <div class="col-md-4 text-black pb-5">
-          <img src="images/collar2-2/IMG_2054.JPG" alt="Collar de Piedras Blancas" class="rounded shadow-drop-2-center animate__animated animate__fadeIn img-fluid">
-          <p class="text-center psize pt-4">Collar de Piedras Blancas</p>
-          <p class="text-center psize">$2000</p>
-          <div class="text-center">
-            <a class="btn btn-dark buy--btn" href="#" role="button">Comprar</a>
-          </div>
-        </div>
-        <div class="col-md-4 text-black pb-5">
-          <img src="images/collar4-2/IMG_2019.JPG" alt="Collar de Piedras Azulmarino" class="rounded shadow-drop-2-center animate__animated animate__fadeIn img-fluid">
-          <p class="text-center psize pt-4">Collar de Piedras Azulmarino</p>
-          <p class="text-center psize">$2000</p>
-          <div class="text-center">
-            <a class="btn btn-dark buy--btn" href="#" role="button">Comprar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid d-flex justify-content-around">
-      <div class="row">
-        <div class="col-md-4 text-black pb-5">
-          <img src="images/collar5-2/IMG_1953.JPG" alt="Collar de Piedras Grises" class="rounded shadow-drop-2-center animate__animated animate__fadeIn img-fluid"> 
-          <p class="text-center psize pt-4">Collar de Piedras Grises</p>
-          <p class="text-center psize">$2000</p>
-          <div class="text-center">
-            <a class="btn btn-dark buy--btn" href="#" role="button">Comprar</a>
-          </div>
-        </div>
-        <div class="col-md-4 text-black pb-5">
-          <img src="images/collar10-2/IMG_1949.JPG" alt="Collar de Piedras Negras" class="rounded shadow-drop-2-center animate__animated animate__fadeIn img-fluid">
-          <p class="text-center psize pt-4">Collar de Piedras Negras</p>
-          <p class="text-center psize">$2000</p>
-          <div class="text-center">
-            <a class="btn btn-dark buy--btn" href="#" role="button">Comprar</a>
-          </div>
-        </div>
-        <div class="col-md-4 text-black pb-5">
-          <img src="images/collar6-2/IMG_2076.JPG" alt="Collar de Piedras Doradas Oscuras" class="rounded shadow-drop-2-center animate__animated animate__fadeIn img-fluid">
-          <p class="text-center psize pt-4">Collar de Piedras Doradas Oscuras</p>
-          <p class="text-center psize">$2000</p>
-          <div class="text-center">
-            <a class="btn btn-dark buy--btn" href="#" role="button">Comprar</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid d-flex justify-content-around">
-      <div class="row">
-        <div class="col-md-4 text-black pb-5">
-          <img src="images/collar7-2/IMG_2047.JPG" alt="Collar de Piedras Marrones" class="rounded shadow-drop-2-center animate__animated animate__fadeIn img-fluid"> 
-          <p class="text-center psize pt-4">Collar de Piedras Marrones</p>
-          <p class="text-center psize">$2000</p>
-          <div class="text-center">
-            <a class="btn btn-dark buy--btn" href="#" role="button">Comprar</a>
-          </div>
-        </div>
-        <div class="col-md-4 text-black pb-5">
-          <img src="images/collar8-2/IMG_2030.JPG" alt="Collar de Piedras Rosas" class="rounded shadow-drop-2-center animate__animated animate__fadeIn img-fluid">
-          <p class="text-center psize pt-4">Collar de Piedras Rosas</p>
-          <p class="text-center psize">$2000</p>
-          <div class="text-center">
-            <a class="btn btn-dark buy--btn" href="#" role="button">Comprar</a>
-          </div>
-        </div>
-        <div class="col-md-4 text-black pb-5">
-          <img src="images/collar3-2/IMG_1978.JPG" alt="Collar de Piedras Azules" class="rounded shadow-drop-2-center animate__animated animate__fadeIn img-fluid">
-          <p class="text-center psize pt-4">Collar de Piedras Azules</p>
-          <p class="text-center psize">$2000</p>
-          <div class="text-center">
-            <a class="btn btn-dark buy--btn" href="#" role="button">Comprar</a>
-          </div>
-        </div>
-      </div>
-    </div>
+  </section>
+
+  <main id="productsContainer">
   </main>
+
+  <div class="cart-container">
+        <div class="cart text-black">
+            <h1>Carrito <img src="images/shopping-cart.png" alt="carro de compras" width="30px"></h1>
+            <button id="cartClose"><img src="images/close.svg" alt="cerrar" width="15px"></button>
+            <div id="cartCont">
+            </div>
+            <p class="productPrice">Precio total: $<span id="totalPrice">0</span></p>
+            <div id="finish"></div>
+        </div>
+    </div>
 
 
   <footer class="mt-5">

@@ -36,6 +36,25 @@ body {
   display: flex;
   justify-content: start; }
 
+.cart--btn {
+  position: fixed;
+  width: 125px;
+  line-height: 55px;
+  bottom: 30px;
+  right: 30px;
+  background-color: yellow;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
+  z-index: 100; }
+
+.cart--btn:hover {
+  text-decoration: none;
+  color: yellow;
+  background-color: #fff; }
+
 .header--navBorder {
   border: #212529 5px solid; }
 
@@ -114,3 +133,96 @@ html, body {
   .footer--content {
     display: flex;
     justify-content: center; } }
+
+#productsContainer {
+  max-width: 1200px;
+  margin: 60px auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; }
+
+.product {
+  max-width: 30%;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3); }
+
+.card-color {
+  background-color: bisque; }
+
+.cart-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: end;
+  align-items: start;
+  transition: all 0.5s;
+  opacity: 0;
+  visibility: hidden; }
+
+.cart-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 5; }
+
+.cart {
+  position: relative;
+  background-color: white;
+  border: 3px solid #7b336f;
+  min-width: 500px;
+  padding: 20px;
+  height: 100%;
+  /* margin-top: -100%; */
+  transition: all 0.5s; }
+
+.cart-active .cart {
+  margin-top: 0; }
+
+.cart h1 {
+  padding-bottom: 5px; }
+
+.cart #cartClose {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  color: #e14c41;
+  border: none;
+  background-color: white; }
+
+.cart #cartClose:hover {
+  cursor: pointer; }
+
+.cart #cartClose:focus {
+  outline: none; }
+
+.cart .productPrice {
+  padding-top: 10px; }
+
+.productInCart {
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  margin: 5px 0;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  color: black; }
+
+.btn-delete {
+  background-color: white;
+  color: red;
+  border: none;
+  font-size: 20px; }
+
+.btn-delete:hover {
+  cursor: pointer; }
+
+.btn-delete:focus {
+  outline: none; }
+
+#finish {
+  display: flex;
+  justify-content: flex-end; }

@@ -56,3 +56,23 @@ body {
   justify-content: start;
 }
 
+.cart--btn {
+  position: fixed;
+  width: 125px;
+  line-height: 55px;
+  bottom: 30px;
+  right: 30px;
+  background-color: yellow;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
+  z-index: 100;
+}
+
+.cart--btn:hover {
+  text-decoration: none;
+  color: yellow;
+  background-color: #fff;
+}
