@@ -82,6 +82,7 @@ cart.addEventListener('click', (e) => {
 
 let buyingCart = [] //recibe la informacion desde la funcion addToCart
 
+
 const productsContainer = document.getElementById('productsContainer');
 const cartCont = document.getElementById('cartCont');
 
@@ -130,6 +131,8 @@ function addToCart(id) {
     if(alreadyExists){
         alreadyExists.quantity = alreadyExists.quantity + 1
         document.getElementById(`quantity${alreadyExists.id}`).innerHTML = `<p id="quantity${alreadyExists.id}">Cantidad: ${alreadyExists.quantity}</p>`
+        //se guarda en el local storage
+        localStorage.setItem('buyingCart', JSON.stringify(buyingCart))
         updateCart()
     }else{
       //sino la cantidad se modifica a 1
@@ -156,25 +159,46 @@ function showCart(addProduct) {
     //permite borrar productos
     btnDelete.addEventListener('click',()=>{
         if (addProduct.quantity === 1) {
+          //si tengo un producto solo me lo borra del carrito
             btnDelete.parentElement.remove()
             buyingCart = buyingCart.filter(item => item.id !== addProduct.id)
+            //se guarda en el local storage
+            localStorage.setItem('buyingCart', JSON.stringify(buyingCart))
             updateCart()
         } else {
           //si tengo mas de un solo producto que borre solo 1
           addProduct.quantity = addProduct.quantity - 1
           document.getElementById(`quantity${addProduct.id}`).innerHTML = `<p id="quantity${addProduct.id}">Cantidad: ${addProduct.quantity}</p>`
+          //se guarda en el local storage
+          localStorage.setItem('buyingCart', JSON.stringify(buyingCart))
           updateCart()
         }
     })
+    localStorage.setItem('buyingCart', JSON.stringify(buyingCart))
 }
 
 function updateCart (){
     //resultado del total segun la cantidad de productos
   cartCounter.innerText = buyingCart.reduce((acc,el)=> acc + el.quantity, 0)
-  totalPrice.innerText = buyingCart.reduce((acc,el)=> acc + (el.precio * el.quantity) , 0)                                                            
+  totalPrice.innerText = buyingCart.reduce((acc,el)=> acc + (el.precio * el.quantity) , 0)                                                   
 }
 
 
+//se guarda el producto que se tiene en el carrito en el local storage
+function cartLS() {
+  if (localStorage.getItem('buyingCart')) {
+    buyingCart = JSON.parse(localStorage.getItem('buyingCart'))
+    buyingCart.forEach(function(item){
+      console.log(item)
+      showCart(item)
+      updateCart()
+    })
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  cartLS()
+})
 
 
 
