@@ -1,59 +1,4 @@
-const products = [
-  {
-    id: 1,
-    nombre: "Collar de Piedras Doradas",
-    precio: 2250,
-    imagen: 'images/collar1-2/IMG_2003.JPG',
-  },
-  {
-    id: 2,
-    nombre: "Collar de Piedras Blancas",
-    precio: 2300,
-    imagen: 'images/collar2-2/IMG_2054.JPG',
-  },
-  {
-    id: 3,
-    nombre: "Collar de Piedras Azulmarino",
-    precio: 2275,
-    imagen: 'images/collar4-2/IMG_2019.JPG',
-  },
-  {
-    id: 4,
-    nombre: "Collar de Piedras Grises",
-    precio: 2200,
-    imagen: 'images/collar5-2/IMG_1953.JPG',
-  },
-  {
-    id: 5,
-    nombre: "Collar de Piedras Negras",
-    precio: 2250,
-    imagen: 'images/collar10-2/IMG_1949.JPG',
-  },
-  {
-    id: 6,
-    nombre: "Collar de Piedras Doradas Oscuras",
-    precio: 2150,
-    imagen: 'images/collar6-2/IMG_2076.JPG',
-  },
-  {
-    id: 7,
-    nombre: "Collar de Piedras Marrones",
-    precio: 2400,
-    imagen: 'images/collar7-2/IMG_2047.JPG',
-  },
-  {
-    id: 8,
-    nombre: "Collar de Piedras Rosas",
-    precio: 2100,
-    imagen: 'images/collar8-2/IMG_2030.JPG',
-  },
-  {
-    id: 9,
-    nombre: "Collar de Piedras Azules",
-    precio: 2300,
-    imagen: 'images/collar3-2/IMG_1978.JPG',
-  },
-]
+import { fetchProducts } from "./stock.js";
 
 //eventos y variables para abrir el carrito
 const cartOpen = document.getElementById('btnCart');
@@ -82,7 +27,6 @@ cart.addEventListener('click', (e) => {
 
 let buyingCart = [] //recibe la informacion desde la funcion addToCart
 
-
 const productsContainer = document.getElementById('productsContainer');
 const cartCont = document.getElementById('cartCont');
 
@@ -91,18 +35,17 @@ const cartCont = document.getElementById('cartCont');
 const cartCounter = document.getElementById('cartCounter');
 const totalPrice = document.getElementById('totalPrice');
 
-showProducts(products)
+let products;
 
-function showProducts(products) {
+const showProducts = async() => {
+  
+    products = await fetchProducts()
 
     productsContainer.innerHTML = ""
 
     products.forEach(el => {
       //desestructuración
-      let imagen = el.imagen;
-      let nombre = el.nombre;
-      let precio = el.precio;
-      let id = el.id;
+      let { imagen, nombre, precio, id} = el
 
       //se crea un div para cada producto
       let productsCard = document.createElement('div')
@@ -126,7 +69,7 @@ function showProducts(products) {
       let btnAdd = document.getElementById(`btn${el.id}`)
       //boton para agregar al carrito
       btnAdd.addEventListener('click',()=>{
-          addToCart(el.id);
+          addToCart(el.id, products);
           //alert de la libreria sweetalert que sale cada vez que agregas un producto al carrito
           Swal.fire({
             icon: 'success',
@@ -137,7 +80,9 @@ function showProducts(products) {
     })
 }
 
-function addToCart(id) {
+showProducts()
+
+function addToCart(id, products) {
     let alreadyExists = buyingCart.find(e => e.id == id)
     //si ya existe se modifica la cantidad del mismo
     if(alreadyExists){
@@ -201,7 +146,6 @@ function cartLS() {
   if (localStorage.getItem('buyingCart')) {
     buyingCart = JSON.parse(localStorage.getItem('buyingCart'))
     buyingCart.forEach(function(item){
-      console.log(item)
       showCart(item)
       updateCart()
     })
