@@ -194,13 +194,3 @@ function cartLS() {
 document.addEventListener('DOMContentLoaded', () => {
   cartLS()
 })
-
-
-
-//elements
-
-
-//methods
-
-
-//events
