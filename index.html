@@ -10,6 +10,7 @@
     <meta name="copyright" content="Estilo Chiks">
     <link rel="icon" href="images/logo/estilochiksicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,10 +77,23 @@
         <div class="cart text-black">
             <h1>Carrito <img src="images/shopping-cart.png" alt="carro de compras" width="30px"></h1>
             <button id="cartClose"><img src="images/close.svg" alt="cerrar" width="15px"></button>
-            <div id="cartCont">
-            </div>
-            <p class="productPrice">Precio total: $<span id="totalPrice">0</span></p>
-            <div id="finish"></div>
+            <hr>
+            <table width="100%">
+              <thead>
+                <tr>
+                  <th class="padding-table">Producto</th>
+                  <th align="center" class="table-title padding-table">Precio</th>
+                  <th align="center" class="table-title padding-table">Cantidad</th>
+                  <th align="center" class="table-title padding-table"></th>
+                </tr>
+              </thead>
+              <tbody id="cartCont">
+
+              </tbody>
+              
+            </table>
+            <h5 class="productPrice pb-3">Precio total: $<span id="totalPrice">0</span></h5>
+            <div><a id="finish" class="btn btn-dark text-center" role="button">Finalizar Compra</a></div>
         </div>
     </div>
 
@@ -143,6 +157,7 @@
   </footer>
     
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/stock.js" type="module"></script>
     <script src="js/main.js" type="module"></script>

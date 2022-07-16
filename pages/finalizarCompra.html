@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Todos nuestros productos son de gran calidad, artesanales y unicos.">
+  <meta name="keywords" content="collares, estilochiks, accesorios, vestimenta, bijouterie, collares artesanales">
+  <meta name="author" content="Alejandro Vera">
+  <meta name="copyright" content="Estilo Chiks">
+  <link rel="icon" href="../images/logo/estilochiksicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/estilos.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+  <title>Finalizar Compra - Estilo Chiks</title>
+</head>
+<body>
+  <main class="container-fluid row text-black">
+    <div class="container--compra">
+      <div class="col-md-6">
+        <h1 class="text-center">CARRITO</h1>
+          <hr>
+          <div>
+            <table width="100%">
+              <thead>
+                <tr>
+                  <th class="padding-table">Producto</th>
+                  <th align="center" class="table-title padding-table">Precio</th>
+                  <th align="center" class="table-title padding-table">Cantidad</th>
+                </tr>
+              </thead>
+              <tbody id="productspay">
+
+              </tbody>
+              
+            </table>
+            
+          </div>
+          
+          <h4 class="productPrice pt-3">Precio total: $<span id="totalPrice">0</span></h4>
+      </div>
+  
+      <div class="contenedor-tarjeta col-md-6">
+  
+        <!-- Tarjeta -->
+        <section class="tarjeta" id="tarjeta">
+          <div class="delantera">
+            <div class="logo-marca" id="logo-marca">
+              <!-- <img src="images/logos/visa.png" alt=""> -->
+            </div>
+            <img src="../images/chip-tarjeta.png" class="chip" alt="">
+            <div class="datos">
+              <div class="grupo" id="numero">
+                <p class="label">Número Tarjeta</p>
+                <p class="numero">#### #### #### ####</p>
+              </div>
+              <div class="flexbox">
+                <div class="grupo" id="nombre">
+                  <p class="label">Nombre Tarjeta</p>
+                  <p class="nombre">Ingresa Tu Nombre</p>
+                </div>
+    
+                <div class="grupo" id="expiracion">
+                  <p class="label">Expiracion</p>
+                  <p class="expiracion"><span class="mes">MM</span> / <span class="year">AA</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="trasera">
+            <div class="barra-magnetica"></div>
+            <div class="datos">
+              <div class="grupo" id="firma">
+                <p class="label">Firma</p>
+                <div class="firma"><p></p></div>
+              </div>
+              <div class="grupo" id="ccv">
+                <p class="label">CCV</p>
+                <p class="ccv"></p>
+              </div>
+            </div>
+            <p class="leyenda">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus exercitationem, voluptates illo.</p>
+            <a href="#" class="link-banco">www.tubanco.com</a>
+          </div>
+        </section>
+    
+        <!-- Contenedor Boton Abrir Formulario -->
+        <div class="contenedor-btn">
+          <button class="btn-abrir-formulario" id="btn-abrir-formulario">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+    
+        <!-- Formulario -->
+        <form action="" id="formulario-tarjeta" class="formulario-tarjeta">
+          <div class="grupo">
+            <label for="inputNumero">Número Tarjeta</label>
+            <input type="text" id="inputNumero" maxlength="19" autocomplete="off">
+          </div>
+          <div class="grupo">
+            <label for="inputNombre">Nombre</label>
+            <input type="text" id="inputNombre" maxlength="19" autocomplete="off">
+          </div>
+          <div class="grupo">
+            <label>Dirección de Entrega</label>
+            <input type="text" maxlength="19" autocomplete="off">
+          </div>
+          <div class="grupo">
+            <label>Codigo Postal</label>
+            <input type="text" maxlength="19" autocomplete="off">
+          </div>
+          <div class="flexbox">
+            <div class="grupo expira">
+              <label for="selectMes">Expiracion</label>
+              <div class="flexbox">
+                <div class="grupo-select">
+                  <select name="mes" id="selectMes">
+                    <option disabled selected>Mes</option>
+                  </select>
+                  <i class="fas fa-angle-down"></i>
+                </div>
+                <div class="grupo-select">
+                  <select name="year" id="selectYear">
+                    <option disabled selected>Año</option>
+                  </select>
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </div>
+            </div>
+    
+            <div class="grupo ccv">
+              <label for="inputCCV">CCV</label>
+              <input type="text" id="inputCCV" maxlength="3">
+            </div>
+          </div>
+          <button type="submit" class="btn-enviar" id="pay">Pagar</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  
+
+
+  <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../js/tarjeta.js"></script>
+  <script src="../js/finalizarCompra.js"></script>
+
+</body>
+</html>l
